@@ -9,6 +9,8 @@ import Title from '../components/Title'
 import VoteButton from '../components/VoteButton'
 import Handler from '../components/Handler'
 import Loader from '../components/Loader'
+import { Provider } from 'react-redux'
+import store from '../redux/store'
 
 const Main: NextPage = () => {
 
@@ -20,12 +22,16 @@ const Main: NextPage = () => {
 
 
     return (
+        <Provider store={store}>
+
         <div>
             {/* <div className='mb-48'>
                 <Loader/>
             </div> */}
             <Handler />
         </div>
+
+        </Provider>
 
 
     )

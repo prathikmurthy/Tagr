@@ -1,11 +1,12 @@
 import anime from "animejs";
 import { useEffect } from "react";
 import { AiFillCaretDown, AiFillCaretLeft, AiFillCaretRight, AiFillCaretUp } from "react-icons/ai";
+import { useAppSelector } from "../utilities/hooks";
 // const anime = require('animejs');
 
 
 export default function VoteButton({ direction, cycle, label }: { direction: "left" | "right" | "up" | "down", cycle: (tag: string) => void, label: string }) {
-    
+    const count = useAppSelector((state) => state.image);
     // useEffect that adds an event listener for a keyboard press that runs once
     useEffect(() => {
         // switch statement with cases for each direction

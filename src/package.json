@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "@mui/material": "^5.9.2",
     "@prisma/client": "^4.1.0",
     "@reduxjs/toolkit": "^1.8.2",
     "anime": "^0.1.2",
