@@ -2,8 +2,8 @@
 const axios = require('axios');
 
 export default function Admin() {
-    axios.get('/api/PushSetup').then(() => {
-    });
+    // axios.get('/api/PushSetup').then(() => {
+    // });
 
     return (
         <div className="min-h-screen min-w-screen">
