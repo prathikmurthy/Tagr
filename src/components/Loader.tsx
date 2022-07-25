@@ -102,7 +102,7 @@ export default function Loader() {
                     <li id="one">{'< Tagr /> is a web-based tool for crowdsourcing data tagging of images'}</li>
                     <li id="two" className='pt-5 2xl:pt-10'>For image-based machine learning models, training data sets require large quantities of pre-tagged images, which are often difficult to obtain with few people. <span className='font-bold'>{'< Tagr /> helps solve this inefficiency.'}</span></li>
                     <li id="three" className='pt-5 2xl:pt-10'>Untagged images will appear in the center of your screen, simply <span className='underline'>press one of the four arrow keys on your keyboard to tag the image</span>.</li>
-                    <li id="four" className='pt-5 2xl:pt-10'>See an image that does not correspond to a given label? <span className='underline'>Pressing the SPACE key tags the image as 'misc'.</span></li>
+                    <li id="four" className='pt-5 2xl:pt-10'>See an image that does not correspond to a given label? <span className='underline'>Pressing the SPACE key tags the image as misc.</span></li>
                     <li id="five" className='pt-5 2xl:pt-10 list-none'>Click the arrow below to start!</li>
                     <li id="arrow" className='pt-3 2xl:pt-10 list-none text-5xl 2xl:text-7xl text-center flex justify-center'><button><Link 
                     to="main"
