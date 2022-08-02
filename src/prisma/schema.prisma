@@ -3,18 +3,18 @@ generator client {
 }
 
 datasource db {
-  provider = "cockroachdb"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
 model Untagged {
-  id        Int      @id @default(sequence())
+  id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
   url       String
 }
 
 model Tagged {
-  id        Int      @id @default(sequence())
+  id        Int      @id @default(autoincrement())
   idnum     Int
   createdAt DateTime @default(now())
   url       String
