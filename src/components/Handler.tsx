@@ -77,7 +77,7 @@ export default function Handler() {
                             <img src={image} width={600} height={280} alt={'pic'} className="" onLoad={() => {
                                 setLoading(false)
                                 }} onError={pullImage}/>
-                            <p className="text-center text-slate-300 font-bold italic absolute -bottom-10 inset-x-0">'space' for MISC</p>
+                            <p className="text-center text-slate-300 font-bold italic absolute -bottom-10 inset-x-0">&apos;space&apos; for MISC</p>
                         </div>
                         <div className={loading ? 'opacity-1' : 'opacity-0'}>
                             <CircularProgress color="secondary" className="absolute left-0 top-0 bottom-0 right-0 m-auto"/>
