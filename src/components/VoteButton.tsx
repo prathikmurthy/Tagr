@@ -1,15 +1,15 @@
 import anime from "animejs";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AiFillCaretDown, AiFillCaretLeft, AiFillCaretRight, AiFillCaretUp } from "react-icons/ai";
 import { useAppSelector } from "../utilities/hooks";
-// const anime = require('animejs');
 
 
-export default function VoteButton({ direction, cycle, label }: { direction: "left" | "right" | "up" | "down", cycle: (tag: string) => void, label: string }) {
+export default function VoteButton({ direction, cycle, label, loading }: { direction: "left" | "right" | "up" | "down", cycle: (tag: string) => void, label: string, loading: boolean } ) {
     const count = useAppSelector((state) => state.image);
-    // useEffect that adds an event listener for a keyboard press that runs once
+    const loadingRef = useRef({});
+    loadingRef.current = loading;
+
     useEffect(() => {
-        // switch statement with cases for each direction
         switch (direction) {
             case "left":
                 var direction_keycode:string = 'ArrowLeft';
@@ -26,25 +26,20 @@ export default function VoteButton({ direction, cycle, label }: { direction: "le
         }
 
         console.log('a')
-        document.addEventListener("keydown", (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            if (e.key === direction_keycode) {
+        document.addEventListener("keyup", (e) => {
+            if (e.key === direction_keycode && !loadingRef.current) {
                 clickHandler();
             }
         });
 
         // return function that removes the event listener
         return () => {
-            document.removeEventListener("keydown", (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                if (e.key === direction_keycode) {
-                    // calls clickhandler and sets timeout to prevent multiple clicks
+            document.removeEventListener("keyup", (e) => {
+                if (e.key === direction_keycode && !loadingRef.current) {
                     clickHandler();
                 }
             });
-        }
+        } 
     }, []);
 
 
@@ -57,6 +52,82 @@ export default function VoteButton({ direction, cycle, label }: { direction: "le
 
         let duration: number = 500;
 
+        //animejs animation to translate image div up
+        switch(direction) {
+            case "left":
+                anime({
+                    targets: '#image',
+                    translateX: '-100rem',
+                    duration: duration,
+                    easing: 'easeInOutQuad',
+                    complete: () => {
+                        anime({
+                            targets: '#image',
+                            translateX: '0rem',
+                            duration: duration,
+                            easing: 'easeInOutQuad',
+                        });
+                    }
+                })
+                break;
+            case "right":
+                anime({
+                    targets: '#image',
+                    translateX: '100rem',
+                    duration: duration,
+                    easing: 'easeInOutQuad',
+                    complete: () => {
+                        anime({
+                            targets: '#image',
+                            translateX: '0rem',
+                            duration: duration,
+                            easing: 'easeInOutQuad',
+                        });
+                    }
+                })
+                break;
+            case "up":
+                anime({
+                    targets: '#image',
+                    translateY: '-100rem',
+                    duration: duration,
+                    easing: 'easeInOutQuad',
+                    complete: () => {
+                        anime({
+                            targets: '#image',
+                            translateY: '0rem',
+                            duration: duration,
+                            easing: 'easeInOutQuad',
+                        });
+                    }
+                })
+                break;
+            case "down":
+                anime({
+                    targets: '#image',
+                    translateY: '100rem',
+                    duration: duration,
+                    easing: 'easeInOutQuad',
+                    complete: () => {
+                        anime({
+                            targets: '#image',
+                            translateY: '0rem',
+                            duration: duration,
+                            easing: 'easeInOutQuad',
+                        });
+                    }
+                })
+                break;  
+            }
+        // animejs animation to translate image div down
+        // anime({
+        //     targets: '#image',
+        //     translateY: '0rem',
+        //     duration: duration,
+        //     delay: duration*10,
+        //     easing: 'easeInOutQuad'
+        // })
+        
         
         // animejs animation to fade opacity to 0 then back to 1 for 1 second
         anime({
@@ -65,7 +136,7 @@ export default function VoteButton({ direction, cycle, label }: { direction: "le
             outlineColor: ["rgb(41, 37, 36)", "rgb(34, 197, 94)", "rgb(41, 37, 36)"],
             color: ['rgb(255, 255, 255)', 'rgb(34, 197, 94)', 'rgb(255, 255, 255)'],
             duration: duration,
-            easing: 'easeInOutQuad',
+            // easing: 'easeInOutQuad',
         });
         anime({
             targets: `#${directions[0]}, #${directions[1]}, #${directions[2]}`,
@@ -73,7 +144,7 @@ export default function VoteButton({ direction, cycle, label }: { direction: "le
             outlineColor: ["rgb(41, 37, 36)", "#b91c1c", "rgb(41, 37, 36)"],
             color: ['rgb(255, 255, 255)', '#b91c1c', 'rgb(255, 255, 255)'],
             duration: duration,
-            easing: 'easeInOutQuad',
+            // easing: 'easeInOutQuad',
         });
 
         // stone 800 #292524
@@ -89,19 +160,19 @@ export default function VoteButton({ direction, cycle, label }: { direction: "le
     switch (direction) {
         case "left":
             direction_class += 'inset-y-20'
-            icon = <div className="flex flex-row 2xl:ml-20"><AiFillCaretLeft className=""/><span className="text-3xl">{label}</span></div>
+            icon = <div className="flex flex-row ml-10 3xl:ml-20"><AiFillCaretLeft className=""/><span className="text-3xl">{label}</span></div>
             break;
         case "right":
             direction_class += 'right-0 inset-y-20'
-            icon = <div className="flex flex-row 2xl:mr-20"><span className="text-3xl">{label}</span><AiFillCaretRight /></div>
+            icon = <div className="flex flex-row mr-10 3xl:mr-20"><span className="text-3xl">{label}</span><AiFillCaretRight /></div>
             break;
         case "up":
             direction_class += 'top-0 inset-x-64'
-            icon = <div className="flex justify-center items-center flex-col 2xl:mt-20"><AiFillCaretUp /><span className="text-3xl">{label}</span></div>
+            icon = <div className="flex justify-center items-center flex-col mt-10 3xl:mt-20"><AiFillCaretUp /><span className="text-3xl">{label}</span></div>
             break;
         case "down":
             direction_class += 'bottom-0 inset-x-40'
-            icon = <div className="flex justify-center items-center flex-col 2xl:mb-20"><span className="text-3xl">{label}</span><AiFillCaretDown /></div>
+            icon = <div className="flex justify-center items-center flex-col mb-10 3xl:mb-20"><span className="text-3xl">{label}</span><AiFillCaretDown /></div>
             break;
     }
     //#endregion
@@ -119,3 +190,4 @@ export default function VoteButton({ direction, cycle, label }: { direction: "le
     )
 
 }
+

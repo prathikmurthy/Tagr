@@ -21,7 +21,7 @@ export const ImageSlice = createSlice({
     setImage: (state, action: PayloadAction<ImageState>) => {
         state.id = action.payload.id
         state.url = action.payload.url
-    }
+    },
     // increment: (state) => {
     //   state.value += 1  
     // },
