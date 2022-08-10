@@ -155,7 +155,7 @@ export default function VoteButton({ direction, cycle, label, loading }: { direc
 
 
     //#region caret switch statement
-    let direction_class: string = 'text-white flex justify-center items-center text-7xl drop-shadow-2xl absolute ';
+    let direction_class: string = 'text-white flex justify-center items-center text-3xl 3xl:text-5xl drop-shadow-2xl absolute ';
     let icon: React.ReactNode = null;
     switch (direction) {
         case "left":

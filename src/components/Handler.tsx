@@ -74,7 +74,7 @@ export default function Handler() {
                 <div className="h-screen w-full flex items-center justify-center">
                     <div className={loading ? '' : 'shadow-2xl drop-shadow-xl shadow-black/50 '}>
                         <div id="image" className={loading ? 'opacity-0 transition-opacity' : 'opacity-1 transition-opacity'}>
-                            <img src={image} width={600} height={280} alt={'pic'} className="" onLoad={() => {
+                            <img src={image} width={500} height={200} alt={'pic'} className="" onLoad={() => {
                                 setLoading(false)
                                 }} onError={pullImage}/>
                             <p className="text-center text-slate-300 font-bold italic absolute -bottom-10 inset-x-0">&apos;space&apos; for MISC</p>

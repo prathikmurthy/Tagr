@@ -23,9 +23,9 @@ const Main: NextPage = () => {
         <Provider store={store}>
 
         <div>
-            <div className='mb-48'>
+            {/* <div className='mb-48'>
                 <Loader/>
-            </div>
+            </div> */}
             <Handler />
         </div>
 
