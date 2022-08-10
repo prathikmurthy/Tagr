@@ -21,7 +21,9 @@ const Main: NextPage = () => {
 
     return (
         <Provider store={store}>
-
+        <Head>
+            <title>{ '< Tagr />' }</title>
+        </Head>
         <div>
             <div className='mb-48'>
                 <Loader/>
