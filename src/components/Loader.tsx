@@ -14,68 +14,6 @@ export default function Loader() {
 
     const [version, setVersion] = useState<string>('v1.1.0 | 1/19/23')
 
-
-    // useEffect(() => {
-    //     //animejs animation to move main div up 30% after 1500ms
-    //     anime({
-    //         targets: '#text',
-    //         translateY: [150, 0],
-    //         duration: 1500,
-    //         delay: 2500,
-    //         easing: 'easeInOutQuad'
-    //     });
-
-    //     //animejs animation to fade li items in
-    //     anime({
-    //         targets: '#one',
-    //         opacity: [0,1],
-    //         delay: 4500,
-    //         duration: 1000,
-    //     });
-    //     anime({
-    //         targets: '#two',
-    //         opacity: [0,1],
-    //         delay: 5500,
-    //         duration: 1000,
-    //     });
-    //     anime({
-    //         targets: '#three',
-    //         opacity: [0,1],
-    //         delay: 6500,
-    //         duration: 1000,
-    //     });
-    //     anime({
-    //         targets: '#four',
-    //         opacity: [0,1],
-    //         delay: 7500,
-    //         duration: 1000,
-    //     });
-    //     anime({
-    //         targets: '#five',
-    //         opacity: [0,1],
-    //         delay: 8500,
-    //         duration: 1000,
-    //     });
-    //     anime({
-    //         targets: '#arrow',
-    //         opacity: [0,1],
-    //         delay: 9500,
-    //         duration: 1000,
-    //     });
-    //     //animejs animation to move arrow down 20% after 1500ms and back up on loop
-    //     anime({
-    //         targets: '#arrow',
-    //         translateY: [80, 0],
-    //         duration: 1500,
-    //         // delay: 9500,
-    //         easing: 'easeInOutQuad',
-    //         loop: true,
-    //         direction: 'alternate'
-    //     });
-
-    // }, []);
-
-
     return (
         <div className="w-screen h-screen flex flex-row transition-all ease-in-out overflow-clip" id="top">
             
@@ -129,3 +67,5 @@ export default function Loader() {
         </div>
     )
 }
+
+// "https://wwww.data-tagging.vercel.app/api/PullUntagged"

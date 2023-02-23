@@ -27,7 +27,6 @@ const Main: NextPage = () => {
         </Head>
         <div className="bg-[#F5F5F5]">
             <Loader />
-            {/* <div className='h-screen'></div> */}
             <Handler />
         </div>
         

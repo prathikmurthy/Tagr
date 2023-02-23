@@ -119,38 +119,7 @@ export default function VoteButton({ direction, cycle, label, loading }: { direc
                 })
                 break;  
             }
-        // animejs animation to translate image div down
-        // anime({
-        //     targets: '#image',
-        //     translateY: '0rem',
-        //     duration: duration,
-        //     delay: duration*10,
-        //     easing: 'easeInOutQuad'
-        // })
-        
-        
-        // animejs animation to fade opacity to 0 then back to 1 for 1 second
-        // anime({
-        //     targets: `#${direction}`,
-        //     // opacity: [1, 0, 1],
-        //     outlineColor: ["rgb(41, 37, 36)", "rgb(34, 197, 94)", "rgb(41, 37, 36)"],
-        //     color: ['rgb(255, 255, 255)', 'rgb(34, 197, 94)', 'rgb(255, 255, 255)'],
-        //     duration: duration,
-        //     // easing: 'easeInOutQuad',
-        // });
-        // anime({
-        //     targets: `#${directions[0]}, #${directions[1]}, #${directions[2]}`,
-        //     // opacity: [1, 0, 1],
-        //     outlineColor: ["rgb(41, 37, 36)", "#b91c1c", "rgb(41, 37, 36)"],
-        //     color: ['rgb(255, 255, 255)', '#b91c1c', 'rgb(255, 255, 255)'],
-        //     duration: duration,
-        //     // easing: 'easeInOutQuad',
-        // });
-
-        // stone 800 #292524
-        // green 500 #22c55e
-        // red 700 #b91c1c
-        
+    
     }
 
 
@@ -160,7 +129,7 @@ export default function VoteButton({ direction, cycle, label, loading }: { direc
     switch (direction) {
         case "left":
             direction_class += 'inset-y-20'
-            icon = <div className="flex flex-row ml-10 3xl:ml-20 "><div className="relative"><AiFillCaretLeft className="text-4xl p-2 m-4 border-2 border-black rounded" /><div className="blur-xl absolute inset-0 -z-5 bg-yellow-500/20"></div></div><span className="text-xl font-medium mt-4 ml-1">{label}</span></div>
+            icon = <div className="flex flex-row ml-10 3xl:ml-20"><div className="relative"><AiFillCaretLeft className="text-4xl p-2 m-4 border-2 border-black rounded" /><div className="blur-xl absolute inset-0 -z-5 bg-yellow-500/20"></div></div><span className="text-xl font-medium mt-4 ml-1">{label}</span></div>
             break;
         case "right":
             direction_class += 'right-0 inset-y-20'
@@ -180,7 +149,7 @@ export default function VoteButton({ direction, cycle, label, loading }: { direc
     function clickHandler() {
         textColorAnimation();
         cycle(label);
-        console.log(`clicked ${direction}`)
+        // console.log(`clicked ${direction}`)
     }
 
     return (
