@@ -21,15 +21,16 @@ const Main: NextPage = () => {
 
     return (
         <Provider store={store}>
+            
         <Head>
-            <title>{ '< Tagr />' }</title>
+            <title>{ 'Tagr by Steelcase' }</title>
         </Head>
-        <div>
-            <div className='mb-48'>
-                <Loader/>
-            </div>
+        <div className="bg-[#F5F5F5]">
+            <Loader />
+            {/* <div className='h-screen'></div> */}
             <Handler />
         </div>
+        
 
         </Provider>
 

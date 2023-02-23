@@ -1,6 +1,6 @@
 import anime from "animejs";
 import { useEffect, useRef, useState } from "react";
-import { AiFillCaretDown, AiFillCaretLeft, AiFillCaretRight, AiFillCaretUp } from "react-icons/ai";
+import { AiFillCaretDown, AiFillCaretLeft, AiFillCaretRight, AiFillCaretUp, AiOutlineArrowDown } from "react-icons/ai";
 import { useAppSelector } from "../utilities/hooks";
 
 
@@ -130,22 +130,22 @@ export default function VoteButton({ direction, cycle, label, loading }: { direc
         
         
         // animejs animation to fade opacity to 0 then back to 1 for 1 second
-        anime({
-            targets: `#${direction}`,
-            // opacity: [1, 0, 1],
-            outlineColor: ["rgb(41, 37, 36)", "rgb(34, 197, 94)", "rgb(41, 37, 36)"],
-            color: ['rgb(255, 255, 255)', 'rgb(34, 197, 94)', 'rgb(255, 255, 255)'],
-            duration: duration,
-            // easing: 'easeInOutQuad',
-        });
-        anime({
-            targets: `#${directions[0]}, #${directions[1]}, #${directions[2]}`,
-            // opacity: [1, 0, 1],
-            outlineColor: ["rgb(41, 37, 36)", "#b91c1c", "rgb(41, 37, 36)"],
-            color: ['rgb(255, 255, 255)', '#b91c1c', 'rgb(255, 255, 255)'],
-            duration: duration,
-            // easing: 'easeInOutQuad',
-        });
+        // anime({
+        //     targets: `#${direction}`,
+        //     // opacity: [1, 0, 1],
+        //     outlineColor: ["rgb(41, 37, 36)", "rgb(34, 197, 94)", "rgb(41, 37, 36)"],
+        //     color: ['rgb(255, 255, 255)', 'rgb(34, 197, 94)', 'rgb(255, 255, 255)'],
+        //     duration: duration,
+        //     // easing: 'easeInOutQuad',
+        // });
+        // anime({
+        //     targets: `#${directions[0]}, #${directions[1]}, #${directions[2]}`,
+        //     // opacity: [1, 0, 1],
+        //     outlineColor: ["rgb(41, 37, 36)", "#b91c1c", "rgb(41, 37, 36)"],
+        //     color: ['rgb(255, 255, 255)', '#b91c1c', 'rgb(255, 255, 255)'],
+        //     duration: duration,
+        //     // easing: 'easeInOutQuad',
+        // });
 
         // stone 800 #292524
         // green 500 #22c55e
@@ -155,24 +155,24 @@ export default function VoteButton({ direction, cycle, label, loading }: { direc
 
 
     //#region caret switch statement
-    let direction_class: string = 'text-white flex justify-center items-center text-3xl 3xl:text-5xl drop-shadow-2xl absolute ';
+    let direction_class: string = 'text-text-main flex justify-center items-center text-3xl 3xl:text-5xl drop-shadow-2xl absolute ';
     let icon: React.ReactNode = null;
     switch (direction) {
         case "left":
             direction_class += 'inset-y-20'
-            icon = <div className="flex flex-row ml-10 3xl:ml-20"><AiFillCaretLeft className=""/><span className="text-3xl">{label}</span></div>
+            icon = <div className="flex flex-row ml-10 3xl:ml-20 "><div className="relative"><AiFillCaretLeft className="text-4xl p-2 m-4 border-2 border-black rounded" /><div className="blur-xl absolute inset-0 -z-5 bg-yellow-500/20"></div></div><span className="text-xl font-medium mt-4 ml-1">{label}</span></div>
             break;
         case "right":
             direction_class += 'right-0 inset-y-20'
-            icon = <div className="flex flex-row mr-10 3xl:mr-20"><span className="text-3xl">{label}</span><AiFillCaretRight /></div>
+            icon = <div className="flex flex-row mr-10 3xl:mr-20"><span className="text-xl font-medium mt-4 mr-1">{label}</span><div className="relative"><AiFillCaretRight className="text-4xl p-2 m-4 border-2 border-black rounded" /><div className="blur-xl absolute inset-0 -z-5 bg-yellow-500/20"></div></div></div>
             break;
         case "up":
             direction_class += 'top-0 inset-x-64'
-            icon = <div className="flex justify-center items-center flex-col mt-10 3xl:mt-20"><AiFillCaretUp /><span className="text-3xl">{label}</span></div>
+            icon = <div className="flex justify-center items-center flex-col mt-10 3xl:mt-20"><div className="relative"><AiFillCaretUp className="text-4xl p-2 m-4 border-2 border-black rounded" /><div className="blur-xl absolute inset-0 -z-5 bg-yellow-500/20"></div></div><span className="text-xl font-medium">{label}</span></div>
             break;
         case "down":
-            direction_class += 'bottom-0 inset-x-40'
-            icon = <div className="flex justify-center items-center flex-col mb-10 3xl:mb-20"><span className="text-3xl">{label}</span><AiFillCaretDown /></div>
+            direction_class += 'bottom-8 inset-x-40'
+            icon = <div className="flex justify-center items-center flex-col 3xl:mb-20"><span className="text-xl font-medium">{label}</span><div className="relative"><AiFillCaretDown className="text-4xl p-2 m-4 border-2 border-black rounded" /><div className="blur-xl absolute inset-0 -z-5 bg-yellow-500/20"></div></div></div>
             break;
     }
     //#endregion

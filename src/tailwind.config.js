@@ -6,22 +6,22 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        'text-main': '#272725',
+        'text-accent': '#AF8963'
+      },
       keyframes: {
-        outline: {
-          '0%, 100%': {
-            'outline-width': '5px',
-            'outline-offset': '-5px',
-        },
-          '50%': {
-            'outline-width:': '20px',
-            'outline-offset': '20px',
+        fade: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
         }
+      },
+      animation: {
+        'fade-in': 'fade 0.25s linear',
       }
-    },
-    animation: {
-      outline: 'outline 4s ease-in-out infinite',
-    }
-  }
   },
-  plugins: [],
+  },
+  plugins: [
+    require("tailwindcss-animate"),
+  ],
 }

@@ -1,120 +1,131 @@
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import ReactTypingEffect from 'react-typing-effect';
 import anime from "animejs";
 import {FiChevronsDown} from 'react-icons/fi';
 import { Link, animateScroll as scroll } from "react-scroll";
+import banner from "../banner.png"
+import Image from 'next/image';
+import { AiOutlineQuestionCircle } from 'react-icons/ai';
 
 export default function Loader() {
 
-    useEffect(() => {
-        //animejs animation to move main div up 30% after 1500ms
-        anime({
-            targets: '#text',
-            translateY: [150, 0],
-            duration: 1500,
-            delay: 2500,
-            easing: 'easeInOutQuad'
-        });
+    const [help, setHelp] = useState<boolean>(false);
 
-        //animejs animation to fade li items in
-        anime({
-            targets: '#one',
-            opacity: [0,1],
-            delay: 4500,
-            duration: 1000,
-        });
-        anime({
-            targets: '#two',
-            opacity: [0,1],
-            delay: 5500,
-            duration: 1000,
-        });
-        anime({
-            targets: '#three',
-            opacity: [0,1],
-            delay: 6500,
-            duration: 1000,
-        });
-        anime({
-            targets: '#four',
-            opacity: [0,1],
-            delay: 7500,
-            duration: 1000,
-        });
-        anime({
-            targets: '#five',
-            opacity: [0,1],
-            delay: 8500,
-            duration: 1000,
-        });
-        anime({
-            targets: '#arrow',
-            opacity: [0,1],
-            delay: 9500,
-            duration: 1000,
-        });
-        //animejs animation to move arrow down 20% after 1500ms and back up on loop
-        anime({
-            targets: '#arrow',
-            translateY: [80, 0],
-            duration: 1500,
-            // delay: 9500,
-            easing: 'easeInOutQuad',
-            loop: true,
-            direction: 'alternate'
-        });
+    const [version, setVersion] = useState<string>('v1.1.0 | 1/19/23')
 
-    }, []);
+
+    // useEffect(() => {
+    //     //animejs animation to move main div up 30% after 1500ms
+    //     anime({
+    //         targets: '#text',
+    //         translateY: [150, 0],
+    //         duration: 1500,
+    //         delay: 2500,
+    //         easing: 'easeInOutQuad'
+    //     });
+
+    //     //animejs animation to fade li items in
+    //     anime({
+    //         targets: '#one',
+    //         opacity: [0,1],
+    //         delay: 4500,
+    //         duration: 1000,
+    //     });
+    //     anime({
+    //         targets: '#two',
+    //         opacity: [0,1],
+    //         delay: 5500,
+    //         duration: 1000,
+    //     });
+    //     anime({
+    //         targets: '#three',
+    //         opacity: [0,1],
+    //         delay: 6500,
+    //         duration: 1000,
+    //     });
+    //     anime({
+    //         targets: '#four',
+    //         opacity: [0,1],
+    //         delay: 7500,
+    //         duration: 1000,
+    //     });
+    //     anime({
+    //         targets: '#five',
+    //         opacity: [0,1],
+    //         delay: 8500,
+    //         duration: 1000,
+    //     });
+    //     anime({
+    //         targets: '#arrow',
+    //         opacity: [0,1],
+    //         delay: 9500,
+    //         duration: 1000,
+    //     });
+    //     //animejs animation to move arrow down 20% after 1500ms and back up on loop
+    //     anime({
+    //         targets: '#arrow',
+    //         translateY: [80, 0],
+    //         duration: 1500,
+    //         // delay: 9500,
+    //         easing: 'easeInOutQuad',
+    //         loop: true,
+    //         direction: 'alternate'
+    //     });
+
+    // }, []);
 
 
     return (
-        <div className="min-w-screen min-h-screen flex flex-col justify-center items-center" id="loader">
-                {/* <p className='text-center text-xl text-slate-200 font-serif pb-5 2xl:pb-0'>welcome to</p> */}
-                {/* <h1 className='text-center text-9xl text-white font-serif drop-shadow-2xl'>{'< Tagr />'}</h1> */}
-                <div className='relative' id="text">
-                    <ReactTypingEffect
-                        className="blur-sm absolute inset-0 top-2 text-center text-7xl 2xl:text-9xl text-slate-700 font-serif drop-shadow-2xl"
-                        text={"< Tagr />"}
-                        // staticText={"C:\\PrathikM\\>"}
-                        typingDelay={1000}
-                        speed={100}
-                        // displayTextRenderer={(text, i) => <code>{text}</code>}
-                    />
-                    <ReactTypingEffect
-                        className="text-center text-7xl 2xl:text-9xl text-white font-serif drop-shadow-2xl"
-                        text={"< Tagr />"}
-                        // staticText={"C:\\PrathikM\\>"}
-                        typingDelay={1000}
-                        speed={100}
-                        // displayTextRenderer={(text, i) => <code>{text}</code>}
-                    />
-                </div>
-                {/* <ul className='blur-md absolute inset-0 top-1 text-center text-md 2xl:text-xl text-slate-800 font-serif pt-10 2xl:pt-20 list-disc max-w-2xl'>
-                    <li >{'< Tagr /> is a web-based tool for crowdsourcing data tagging of images'}</li>
-                    <li className='pt-5 2xl:pt-10'>For image-based machine learning models, training data sets require large quantities of pre-tagged images, which are often difficult to obtain with few people. <span className='font-bold'>{'< Tagr /> helps solve this inefficiency.'}</span></li>
-                    <li className='pt-5 2xl:pt-10'>Untagged images will appear in the center of your screen, simply <span className='underline'>press one of the four arrow keys on your keyboard to tag the image</span>.</li>
-                    <li className='pt-5 2xl:pt-10'>See an image that does not correspond to a given label? <span className='underline'>Pressing the SPACE key tags the image as 'misc'.</span></li>
-                    <li className='pt-5 2xl:pt-10 list-none'>Click the arrow below to start!</li>
-                    
-                </ul> */}
-                <ul className='text-center text-md 2xl:text-xl text-slate-200 font-serif pt-10 2xl:pt-20 list-disc max-w-2xl'>
-                    <li id="one">{'< Tagr /> is a web-based tool for crowdsourcing data tagging of images'}</li>
-                    <li id="two" className='pt-5 2xl:pt-10'>For image-based machine learning models, training data sets require large quantities of pre-tagged images, which are often difficult to obtain with few people. <span className='font-bold'>{'< Tagr /> helps solve this inefficiency.'}</span></li>
-                    <li id="three" className='pt-5 2xl:pt-10'>Untagged images will appear in the center of your screen, simply <span className='underline'>press one of the four arrow keys on your keyboard to tag the image</span>.</li>
-                    <li id="four" className='pt-5 2xl:pt-10'>See an image that does not correspond to a given label? <span className='underline'>Pressing the SPACE key tags the image as misc.</span></li>
-                    <li id="five" className='pt-5 2xl:pt-10 list-none'>Click the arrow below to start!</li>
-                    <li id="arrow" className='pt-3 2xl:pt-10 list-none text-5xl 2xl:text-7xl text-center flex justify-center'><button><Link 
-                    to="main"
-                    activeClass="active"
-                    spy={true}
-                    smooth={true}
-                    duration={1000}><FiChevronsDown /></Link></button></li>
-                </ul>
-                
-                
+        <div className="w-screen h-screen flex flex-row transition-all ease-in-out overflow-clip" id="top">
+            
+            <div className='absolute top-2 left-2 text-xs text-text-main z-50'>
+                {version}
+            </div>
+
+            <div className='absolute top-12 right-12 text-4xl p-4 z-50 hover:text-text-accent hover:text-6xl transition-all' onMouseOver={() => setHelp(true)} onMouseOut={() => setHelp(false)}>
+                <AiOutlineQuestionCircle />
                 
 
+                {
+                    help ? <div className='animate-fade-in'>
+                        <div className="absolute top-4 right-24 text-sm w-96 text-black">
+                            <ul>
+                                <li>Untagged images will appear in the center of your screen. <span className='font-bold underline'>Simply click any of the four labels on the screen, or any of the four arrow keys on your keyboard, to "tag" the image with the corresponding label.</span></li>
+                                <br />
+                                <li>See a misc image that does not correlate to any catagory? <span className='font-bold underline'>Simply click the SPACE key on your keyboard to "tag" the image as misc.</span></li>
+                            </ul>
+                        </div>
+                    </div> : null
+                }
+
+
+            </div>
+
+            <div className=''>
+                <Image className="h-screen w-64 overflow-hidden" src={banner} />
+            </div>
+            <div className={help ? 'blur-md grow transition-all ease-in-out bg-black/5' : 'grow'}>
+                <div className='grow h-full flex flex-col justify-evenly items-center text-center pb-48 pt-36'>
+                    <div className='mt-64'>
+                        <h1 className='text-text-main text-7xl tracking-wider font-serif'>TAGR</h1>
+                        <p className='text-sm text-text-main pb-10 font-serif'>by Steelcase</p>
+                        <p className='text-lg text-text-accent'>Crowdsourcing data tagging images.</p>
+                    </div>
+                    <div className='mt-36 font-extralight tracking-wide text-md'>
+                        <p>Efficiently data train image-based machine learning models.</p>
+                    </div>
+                    <div className='mt-36 text-4xl'>
+                        <button><Link
+                            to="main"
+                            activeClass="active"
+                            spy={true}
+                            smooth={true}
+                            duration={1000}><FiChevronsDown className='animate-bounce' /></Link></button>
+                    </div>
+                </div>
+                
+            </div>
         </div>
     )
 }

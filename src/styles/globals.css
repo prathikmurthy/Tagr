@@ -6,18 +6,22 @@
 html,
 body {
   /* background-color: rgb(30 41 59); */
-  /* background-color: #121212; */
+  /* background-color: #F5F5F5; */
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+     */
+  /* font-family:'Times New Roman', Times, serif */
+  font-family: 'Helvetica Neue', 'Times New Roman';
 
       /* background: linear-gradient(300deg,deepskyblue,darkviolet,blue); */
       /* background: linear-gradient(30deg,#7c08c5,#8362ab,); */
     
-      background: linear-gradient(341deg,#6f7348,#2ebdc2,#cc79d6,#d03963,#ba99c4);
+      /* background: linear-gradient(341deg,#6f7348,#2ebdc2,#cc79d6,#d03963,#ba99c4);
   background-size: 360% 360%;
-  animation: gradient-animation 54s ease infinite;
+  animation: gradient-animation 54s ease infinite; */
+
     
       
   }

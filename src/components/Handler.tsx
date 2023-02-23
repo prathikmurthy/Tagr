@@ -4,10 +4,12 @@ import { useState, useEffect } from "react";
 import VoteButton from "./VoteButton";
 import CircularProgress from '@mui/material/CircularProgress';
 import { BsQuestionCircle } from "react-icons/bs";
+import { BiArrowBack } from "react-icons/bi"
 
 import { useAppSelector, useAppDispatch } from '../utilities/hooks'
 import store from "../redux/store";
 import anime from "animejs";
+import { Link } from "react-scroll";
 
 export default function Handler() {
     const dispatch = useAppDispatch()
@@ -59,30 +61,39 @@ export default function Handler() {
     }
 
     return (
-        <div className="relative" id="main">
+        <div className="relative text-text-main" id="main">
+            <button><Link
+                to="top"
+                activeClass="active"
+                spy={true}
+                smooth={true}
+                duration={1000}><div className="absolute top-12 left-12 flex flex-row">
+                    <BiArrowBack className="mt-1" />
+                    <p className="pl-2">Back</p>
+                </div></Link></button>
+            
             
             <VoteButton direction='left' cycle={cycleImages} loading={loading} label='Meeting Spaces'/>
             <VoteButton direction='right' cycle={cycleImages} loading={loading} label='Workstations'/>
             <VoteButton direction='up' cycle={cycleImages} loading={loading} label='Private Spaces'/>
             <VoteButton direction='down' cycle={cycleImages} loading={loading} label='Private Office'/>
-        
-            {/* <div className="bg-white rounded-2xl absolute top-8 pt-4 pb-4 pl-4 pr-96 shadow-black/50 shadow-md hover:bg-green-900" style={{right: '-22rem'}}>
-                <button><BsQuestionCircle className="text-4xl hover:text-8xl"/></button>
-            </div> */}
-            
-            <div className="min-h-screen min-w-screen">
-                <div className="h-screen w-full flex items-center justify-center">
-                    <div className={loading ? '' : 'shadow-2xl drop-shadow-xl shadow-black/50 '}>
+    
+            <div className="h-screen w-screen text-text-main -mt-6">
+                <div className="h-screen w-full flex justify-center items-center">
+
                         <div id="image" className={loading ? 'opacity-0 transition-opacity' : 'opacity-1 transition-opacity'}>
-                            <img src={image} width={500} height={200} alt={'pic'} className="" onLoad={() => {
+                            <img src={image} width={600} height={250} alt={'pic'} className="" onLoad={() => {
                                 setLoading(false)
                                 }} onError={pullImage}/>
-                            <p className="text-center text-slate-300 font-bold italic absolute -bottom-10 inset-x-0">&apos;space&apos; for MISC</p>
+                            <p className="text-center text-text-main font-bold italic absolute -bottom-10 inset-x-0">&apos;space&apos; for MISC</p>
                         </div>
+
+
                         <div className={loading ? 'opacity-1' : 'opacity-0'}>
                             <CircularProgress color="secondary" className="absolute left-0 top-0 bottom-0 right-0 m-auto"/>
                         </div>
-                    </div>
+
+                        
                 </div>
             </div>
             
